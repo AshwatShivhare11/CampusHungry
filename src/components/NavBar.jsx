@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Nav, Image } from 'react-bootstrap'
-import { LinkContainer, } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { NavLink } from 'react-router-dom'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiOutlineLogin} from 'react-icons/ai'
