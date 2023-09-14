@@ -1,14 +1,24 @@
 import React,{useState} from 'react'
-import {Card,Button,Row,Col} from 'react-bootstrap'
+import {Card,Button,Row,Col,Modal} from 'react-bootstrap'
+
 import {GiPriceTag} from 'react-icons/gi'
 import {BiRupee} from 'react-icons/bi'
+import {BsInfoSquare} from 'react-icons/bs'
 const Pizza = ({pizza}) => {
     const[varient,setVarient] = useState('small')
     const[quantity, setQuantity] = useState(1)
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+   
   return (
     <>
        <Card style={{ width: '18rem', marginTop:"25px" }}>
-      <Card.Img variant="top" src={pizza.image} style={{height:"230px"}}/>
+      <Card.Img variant="top" 
+      src={pizza.image} 
+      style={{height:"230px", cursor:"pointer"}}
+      onClick={handleShow}/>
       <Card.Body>
         <Card.Title>{pizza.name}</Card.Title>
         <Card.Text>
@@ -41,6 +51,25 @@ const Pizza = ({pizza}) => {
         </Row>
       </Card.Body>
     </Card>
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{pizza.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <div>
+            <Card.Img variant="top" 
+      src={pizza.image} 
+      style={{height:"230px"}}
+      />
+            </div>
+            <div>
+                <h5> <BsInfoSquare />: {pizza.description}</h5>
+            
+            </div>
+            </Modal.Body>
+        
+      </Modal>
+   
     </>
   )
 }
